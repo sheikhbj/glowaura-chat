@@ -51,3 +51,9 @@ console.log('handle matching passed');
   assert.match(note, /Cream A \[a\].*Rs 1,000 more for free delivery/);
   console.log('v2 features passed');
 }
+{
+  const { contextNote } = await import('../lib/assistant.js');
+  const n = contextNote({ page: { type: 'product', handle: 'x' }, cart: [] }, new Map([['x', { title: 'Relief Sun Rice + Probiotics' }]]));
+  assert.match(n, /product page of Relief Sun Rice \+ Probiotics \[x\]/);
+  console.log('page context passed');
+}
