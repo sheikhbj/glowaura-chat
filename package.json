@@ -1,0 +1,6 @@
+{
+  "name": "glowaura-chat",
+  "private": true,
+  "type": "module",
+  "description": "GlowAura AI shopping assistant API (Vercel edge function)"
+}
