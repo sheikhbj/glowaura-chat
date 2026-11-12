@@ -40,3 +40,14 @@ console.log('all tests passed');
 const hs = new Set(['anua-niacinamide-10-txa-4-serum-30ml', 'medicube-zero-foam-cleanser-120g']);
 assert.deepEqual(parseReply('x\n[[p:anua-niacinamide-10-txa-4-serum]]\n[[ p:medicube-zero-foam-cleanser-120g ]]\n[[p:totally-unknown]]', hs).products, ['anua-niacinamide-10-txa-4-serum-30ml', 'medicube-zero-foam-cleanser-120g']);
 console.log('handle matching passed');
+{
+  const pr = parseReply('Hi\n[[q:Oily skin]]\n[[ q: Dry skin ]]\n[[p:anua-niacinamide-10-txa-4-serum-30ml]]', new Set(['anua-niacinamide-10-txa-4-serum-30ml']));
+  assert.deepEqual(pr.suggestions, ['Oily skin', 'Dry skin']);
+  assert.equal(pr.reply, 'Hi');
+  const { briefOf, contextNote } = await import('../lib/assistant.js');
+  const b = briefOf("<p>A peel shot.</p><h3>What's inside</h3><ul><li>BHA</li><li>Centella</li></ul><h3>How to use</h3><p>Evening only.</p><h3>Frequently asked questions</h3><details>x</details><script>{}</script>");
+  assert.equal(b, 'A peel shot. | Inside: BHA, Centella | How to use: Evening only.');
+  const note = contextNote({ cart: [{ handle: 'a', qty: 1 }], cartTotal: 5000 }, new Map([['a', { title: 'Cream A' }]]));
+  assert.match(note, /Cream A \[a\].*Rs 1,000 more for free delivery/);
+  console.log('v2 features passed');
+}
