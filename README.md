@@ -30,3 +30,14 @@ and asks Claude for a short reply.
 ## Test
 
 `node test/mock.test.js`
+
+## Chat window (widget)
+
+The website loads the chat window from `public/widget.js`, so the look and behaviour can be
+changed without touching the Shopify theme.
+
+1. Edit `src/ga2-ai-chat.liquid` (markup, CSS and JS of the chat window).
+2. Run `python3 tools/build-widget.py` to rebuild `public/widget.js`.
+3. Commit and push. Netlify deploys in under a minute; browsers pick it up within 5 minutes.
+
+The theme only contains `src/ga2-ai-chat-loader.liquid` (saved in Shopify as `sections/ga2-ai-chat.liquid`).

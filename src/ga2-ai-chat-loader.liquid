@@ -1,0 +1,40 @@
+{%- comment -%}
+  GlowAura AI chat loader. The chat window itself (look, buttons, behaviour) is served
+  from the chat server as widget.js, so it can be improved without editing this theme.
+  The brain and the API key live on the same server.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign show = true
+  if s.api_url == blank or s.widget_url == blank or template.name == 'password' or template.directory == 'customers'
+    assign show = false
+  endif
+-%}
+{%- if show -%}
+<ga2-ai-chat class="gac"
+  data-api="{{ s.api_url | escape }}"
+  data-wa="{{ s.whatsapp | escape }}"
+  data-page="{{ template.name }}"
+  data-title="{{ page_title | escape }}"
+  data-heading="{{ s.title | escape }}"
+  data-launcher="{{ s.launcher_text | escape }}"
+  data-teaser="{{ s.teaser | escape }}"
+  {%- if template.name == 'product' %} data-handle="{{ product.handle }}" data-product="{{ product.title | escape }}"{% endif %}></ga2-ai-chat>
+<script src="{{ s.widget_url | escape }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "GlowAura AI chat",
+  "class": "ga2-ai-chat-section",
+  "settings": [
+    { "type": "text", "id": "api_url", "label": "Chat server URL", "default": "https://glowaura-chat.netlify.app/api/chat", "info": "Ends in /api/chat. The chat stays hidden if this is empty." },
+    { "type": "text", "id": "widget_url", "label": "Chat window script", "default": "https://glowaura-chat.netlify.app/widget.js", "info": "The chat window is updated from GitHub through this file, no theme changes needed." },
+    { "type": "text", "id": "launcher_text", "label": "Button text", "default": "Ask GlowAura" },
+    { "type": "text", "id": "title", "label": "Chat title", "default": "GlowAura Beauty Advisor" },
+    { "type": "text", "id": "teaser", "label": "Pop-up hint (shown once per visit after 12 seconds)", "default": "Not sure what suits your skin? Ask me, I reply in seconds." },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp number (country code, no +)", "default": "923220247152" },
+    { "type": "paragraph", "content": "Store hours, dispatch delays and other current notes go in the page 'Chat assistant notes' (Online Store > Pages). The assistant reads it every 10 minutes. Any button with data-ai-chat-open opens the chat." }
+  ]
+}
+{% endschema %}
