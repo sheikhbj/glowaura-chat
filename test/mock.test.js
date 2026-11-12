@@ -37,3 +37,6 @@ const noKey = await handle(req({ messages: [{ role: 'user', content: 'x' }] }), 
 assert.equal(noKey.status, 503);
 assert.equal(cleanMessages([{ role: 'user', content: 'a' }, { role: 'assistant', content: 'b' }]), null);
 console.log('all tests passed');
+const hs = new Set(['anua-niacinamide-10-txa-4-serum-30ml', 'medicube-zero-foam-cleanser-120g']);
+assert.deepEqual(parseReply('x\n[[p:anua-niacinamide-10-txa-4-serum]]\n[[ p:medicube-zero-foam-cleanser-120g ]]\n[[p:totally-unknown]]', hs).products, ['anua-niacinamide-10-txa-4-serum-30ml', 'medicube-zero-foam-cleanser-120g']);
+console.log('handle matching passed');
