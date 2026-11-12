@@ -4,7 +4,13 @@ The private side of the AI chat on glowaura.com.pk. It keeps the Anthropic API k
 off the website, reads the live product list and the "Chat assistant notes" page,
 and asks Claude for a short reply.
 
-## Deploy on Vercel
+## Deploy on Netlify (free plan allows business use)
+
+1. app.netlify.com → Add new site → Import an existing project → GitHub → this repo. Leave build settings as they are.
+2. Site configuration → Environment variables → add `ANTHROPIC_API_KEY`, then Deploys → Trigger deploy.
+3. Your endpoint is `https://<site-name>.netlify.app/api/chat`.
+
+## Or deploy on Vercel (Pro plan for commercial use)
 
 1. vercel.com → Add New → Project → import this repo. No build settings needed.
 2. Settings → Environment Variables:
