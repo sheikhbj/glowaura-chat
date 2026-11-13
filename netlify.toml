@@ -7,3 +7,9 @@
   [headers.values]
     Cache-Control = "public, max-age=300, must-revalidate"
     Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/tmp/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "no-store"
