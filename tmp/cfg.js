@@ -1,5 +1,5 @@
 window.CFG = {
-'arencia-vitamin-c-booster-shot-face-eye-moisturizer-30ml': {src:'arencia-vitamin-c-booster-shot-1-main.png', noSeg:'alpha', poly:[[502,128],[724,128],[722,160],[691,925],[662,940],[660,1062],[650,1068],[570,1068],[560,1062],[558,940],[541,925],[504,160]], snap:8},
+'arencia-vitamin-c-booster-shot-face-eye-moisturizer-30ml': {src:'arencia-vitamin-c-booster-shot-1-main.png', noSeg:'alpha', poly:[[502,128],[724,128],[722,160],[691,925],[662,940],[660,1062],[650,1068],[570,1068],[560,1062],[558,940],[541,925],[504,160]], snap:3},
 'dr-althea-345-relief-cream-50ml': {src:'dr-althea-345-relief-cream-1-main.jpg', crop:[740,0,440,1200]},
 'beauty-of-joseon-relief-sun-aqua-fresh-rice-b5-spf50': {src:'https://cdn.shopify.com/s/files/1/0558/4135/7989/files/relief-sunscreen-aqua-fresh-1.webp?v=1770602802&width=1600'},
 'beauty-of-joseon-relief-sun-rice-probiotics-spf50-pa-50ml': {src:'beauty-of-joseon-relief-sun-rice-probiotics-main.jpg'},
