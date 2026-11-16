@@ -30,7 +30,7 @@ window.CFG = {
 'axis-y-heartleaf-my-type-calming-cream-60ml': {src:'8a373d754ab5262a9136bb97ca54621b.png', noSeg:'alpha'},
 'axis-y-quinoa-one-step-balanced-gel-cleanser-180ml': {src:'418db6de51d4ca516ff814bf034f8f71.png', noSeg:'alpha'},
 'beauty-of-joseon-calming-barrier-serum-green-tea-panthenol-30ml': {src:'001_61356454-461b-424d-8ef7-32589fb88d92.png'},
-'beauty-of-joseon-stay-fresh-tone-up-sunscreen-spf-50-green-50ml': {src:'BeautyofJoseonStayFreshTone-UpSunCreamSPF50_PA_50ml2colors-3.jpg', crop:[190,150,320,760], poly:[[32,44],[207,31],[296,450],[297,464],[288,728],[240,738],[182,711],[163,467]], snap:6, postRot:-0.168},
+'beauty-of-joseon-stay-fresh-tone-up-sunscreen-spf-50-green-50ml': {src:'BeautyofJoseonStayFreshTone-UpSunCreamSPF50_PA_50ml2colors-3.jpg', crop:[190,150,320,760], poly:[[32,44],[207,31],[296,450],[297,464],[288,728],[240,738],[182,711],[163,467]], snap:6, postRot:0.168},
 'celimax-pore-dark-spot-brightening-cream-35ml': {src:'celimaxPore_DarkSpotBrighteningCream35ml.webp'},
 'centellian24-madeca-cream-hydra-calming-50ml': {src:'Centellian24MadecaCreamHydraCalming50ml-1.jpg'},
 'dr-althea-345-relief-cream-mist-60ml': {src:'Relief_01.jpg'},
