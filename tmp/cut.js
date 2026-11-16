@@ -126,7 +126,8 @@ C.make = async (cfg) => {
     while (st.length) { const p = st.pop(); if (vis[p]) continue; vis[p] = 1; const r = d[p * 4], g = d[p * 4 + 1], b = d[p * 4 + 2]; if (Math.min(r, g, b) < 236 && d[p * 4 + 3] > 10) continue; A[p] = 0; const xx = p % w, yy = (p / w) | 0;
       if (xx > 0) st.push(p - 1); if (xx < w - 1) st.push(p + 1); if (yy > 0) st.push(p - w); if (yy < h - 1) st.push(p + w); }
     for (let i = 0; i < w * h; i++) A[i] = Math.min(A[i], d[i * 4 + 3]);
-  } else if (cfg.noSeg === 'rect') { A.fill(255); }
+  } else if (cfg.noSeg === 'alpha') { for (let i = 0; i < w * h; i++) A[i] = d[i * 4 + 3]; }
+  else if (cfg.noSeg === 'rect') { A.fill(255); }
   else {
     const blob = await cnv.convertToBlob({ type: 'image/png' });
     const out = await C.lib.removeBackground(blob, { model: 'isnet_fp16', output: { format: 'image/png' } });
@@ -154,6 +155,7 @@ C.make = async (cfg) => {
   if (cfg.round) { // rounded-corner rect packshot (sheet masks)
     const r = new OffscreenCanvas(w, h), rx = r.getContext('2d'); rx.beginPath(); rx.roundRect(0, 0, w, h, cfg.round * sc); rx.clip(); rx.drawImage(cnv, 0, 0); cnv = r;
   }
+  if (cfg.postRot) { const a = cfg.postRot, cs = Math.abs(Math.cos(a)), sn = Math.abs(Math.sin(a)); const W2 = Math.ceil(w * cs + h * sn), H2 = Math.ceil(w * sn + h * cs); const r = new OffscreenCanvas(W2, H2), rx = r.getContext('2d'); rx.translate(W2 / 2, H2 / 2); rx.rotate(a); rx.drawImage(cnv, -w / 2, -h / 2); cnv = r; }
   return await cnv.convertToBlob({ type: 'image/png' });
 };
 C.run = async (list) => { // list of [key,cfg]; stores results in IndexedDB; progress in C.log
